@@ -1,6 +1,6 @@
 function ctBatchDICOMFromISQ()
 
-template = importdata(['j:\Silva''s lab\Lab People folders\Daniel Leib\Scanco Scripts\DICOM_Batch_Export.COM'],'t',5);
+template = importdata(fullfile(pwd,'DICOM_Batch_Export.COM'),'t',5);
 
 answer1 = inputdlg('Please enter your sample number, three digits for Viva, four digits for Micro');
 answer2 = inputdlg('Please enter the first measurement number you would like to reconstruct');
