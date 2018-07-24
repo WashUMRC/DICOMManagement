@@ -16,7 +16,7 @@ if length(answer1{1}) == 4
     fprintf(comFile,'%s','$ SET FILE/ATTRIBUTEs=RFM=STM');
     fprintf(comFile,'%s\n','');
     fprintf(comFile,'%s\n','$! Original code created by Dan Leib');
-    f = ftp('10.21.24.204','microct','mousebone4');
+    f = ftp('10.21.24.204','microct','mousebone4','System','OpenVMS');
     ascii(f);
     cd(f,'dk0');
     cd(f,'data');
@@ -60,7 +60,7 @@ elseif length(answer1{1}) == 3
     fprintf(comFile,'%s','$ SET FILE/ATTRIBUTEs=RFM=STM');
     fprintf(comFile,'%s\n','');
     fprintf(comFile,'%s\n','$! Original code created by Dan Leib');
-    f = ftp('10.21.24.203','microct','mousebone4');
+    f = ftp('10.21.24.203','microct','mousebone4','System','OpenVMS');
     ascii(f);
     cd(f,'dk0');
     cd(f,'data');
