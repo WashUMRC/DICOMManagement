@@ -1,5 +1,7 @@
 function ctBatchDICOMFromISQ()
 
+checkForPuTTy();
+
 template = importdata(fullfile(pwd,'DICOM_Batch_Export.COM'),'t',5);
 
 answer1 = inputdlg('Please enter your sample number, three digits for Viva, four digits for Micro');
@@ -101,7 +103,19 @@ else
 end
 
 if length(answer1{1}) == 4
-    runVMSScriptMicro();
+    plinkPath = '"C:\Program Files\PuTTY\plink.exe" ';
+    savedSession = 'uCT40 ';
+    userName = 'microct ';
+    password = 'mousebone4 ';
+    remoteScratch = 'IDISK1:[MICROCT.SCRATCH]';
+    sysLine = [plinkPath savedSession '-l ' userName '-pw ' password '@' remoteScratch 'microctcomfile.com'];
+    system(sysLine);
 else
-    runVMSScriptViva();
+    plinkPath = '"C:\Program Files\PuTTY\plink.exe" ';
+    savedSession = 'VivaCT40 ';
+    userName = 'microct ';
+    password = 'mousebone4 ';
+    remoteScratch = 'IDISK1:[MICROCT.SCRATCH]';
+    sysLine = [plinkPath savedSession '-l ' userName '-pw ' password '@' remoteScratch 'microctcomfile.com'];
+    system(sysLine);
 end
