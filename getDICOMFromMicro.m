@@ -4,7 +4,7 @@ answer1 = inputdlg('Please enter your sample number');
     answer2{1} = '00000';% = inputdlg('Please enter the first measurement number you would like to retrieve the DICOM files for');
     answer3 = uigetdir(pwd,'Please choose a folder in which to dump all the DICOM files');
 % while tt == 1
-    f = ftp('10.21.24.204','microct','mousebone4');
+    f = ftp('10.21.24.204','microct','mousebone4','System','OpenVMS');
     binary(f);
 %     answer1 = inputdlg('Please enter your sample number');
 %     answer2 = inputdlg('Please enter the first measurement number you would like to retrieve the DICOM files for');
