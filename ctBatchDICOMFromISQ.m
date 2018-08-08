@@ -7,6 +7,7 @@ template = importdata(fullfile(pwd,'DICOM_Batch_Export.COM'),'t',5);
 answer1 = inputdlg('Please enter your sample number, three digits for Viva, four digits for Micro');
 answer2 = inputdlg('Please enter the first measurement number you would like to reconstruct');
 answer3 = inputdlg('Please enter the last measurement number you would like to reconstruct');
+pathstr = uigetdir(pwd,'Please select a folder in which to put your DICOM files.');
     
 %generate com file to be used to generate headers files
 %to run the com file, you must first execute SET FILE/ATTRIBUTE=RFM:STM and
@@ -110,6 +111,7 @@ if length(answer1{1}) == 4
     remoteScratch = 'IDISK1:[MICROCT.SCRATCH]';
     sysLine = [plinkPath savedSession '-l ' userName '-pw ' password '@' remoteScratch 'microctcomfile.com'];
     system(sysLine);
+    getDICOMFromMicroSub(answer1,pathstr);
 else
     plinkPath = '"C:\Program Files\PuTTY\plink.exe" ';
     savedSession = 'VivaCT40 ';
@@ -118,4 +120,5 @@ else
     remoteScratch = 'IDISK1:[MICROCT.SCRATCH]';
     sysLine = [plinkPath savedSession '-l ' userName '-pw ' password '@' remoteScratch 'microctcomfile.com'];
     system(sysLine);
+    getDICOMFromVivaSub(answer1,pathstr);
 end
